@@ -1,9 +1,7 @@
 package com.vk.rest.controllers;
 
-import com.vk.dao.BallDao;
 import com.vk.dao.domain.Ball;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.vk.service.BallManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,21 +14,17 @@ import java.util.List;
 @Controller
 @RequestMapping("/ball")
 public class BallController {
-    final static Logger logger = LoggerFactory.getLogger(BallController.class);
-
     @Inject
-    private BallDao ballDao;
+    private BallManager ballManager;
 
-	@RequestMapping(value="list", method=RequestMethod.GET)
+	@RequestMapping(value="list", method=RequestMethod.GET, produces="application/json")
 	public @ResponseBody List<Ball> list() {
-        logger.info("Getting list of all balls.");
-		return ballDao.findAll();
+		return ballManager.findAllBalls();
 	}
 
     @RequestMapping(value="add", method=RequestMethod.POST, consumes="application/json")
     public String add(@RequestBody Ball ball) {
-        logger.info("Adding new ball. color={} radius={}", ball.getColor(), ball.getRadius());
-        ballDao.save(ball);
+        ballManager.createNewBall(ball);
         return "redirect:/";
     }
 }
