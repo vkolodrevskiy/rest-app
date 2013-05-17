@@ -1,3 +1,3 @@
 Spring Rest
 -------------------
-Using Spring + Hibernate + H2
+Using Spring MVC(Rest) + Hibernate + HSQLDB
