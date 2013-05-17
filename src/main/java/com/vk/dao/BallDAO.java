@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface BallDao  {
     List<Ball> findAll();
+    Ball save(Ball ball);
 }

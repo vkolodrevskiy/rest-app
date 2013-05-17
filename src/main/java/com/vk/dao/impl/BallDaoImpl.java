@@ -23,4 +23,10 @@ public class BallDaoImpl implements BallDao {
     public List<Ball> findAll() {
         return hibernateTemplate.find("from " + Ball.class.getName());
     }
+
+    @Override
+    public Ball save(Ball ball) {
+        hibernateTemplate.save(ball);
+        return ball;
+    }
 }

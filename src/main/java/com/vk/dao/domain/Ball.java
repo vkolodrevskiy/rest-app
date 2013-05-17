@@ -1,5 +1,7 @@
 package com.vk.dao.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +21,9 @@ public class Ball {
 
     @Size(min=1, max=14)
     private String color;
-
     private Double radius;
 
+    @JsonIgnore
     public Long getId() {
         return id;
     }
