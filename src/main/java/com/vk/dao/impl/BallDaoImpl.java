@@ -1,9 +1,11 @@
 package com.vk.dao.impl;
 
-import com.googlecode.genericdao.dao.jpa.GenericDAOImpl;
 import com.vk.dao.BallDao;
 import com.vk.dao.domain.Ball;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -11,9 +13,14 @@ import java.util.List;
  *
  * @author vkolodrevskiy
  */
-public class BallDaoImpl extends GenericDAOImpl<Ball, Long> implements BallDao {
+@Repository
+public class BallDaoImpl implements BallDao {
+
+    @Inject
+    HibernateTemplate hibernateTemplate;
+
     @Override
-    public List<Ball> findByColor(String color) {
-        throw new UnsupportedOperationException("Not implemeted yet");
+    public List<Ball> findAll() {
+        return hibernateTemplate.find("from " + Ball.class.getName());
     }
 }

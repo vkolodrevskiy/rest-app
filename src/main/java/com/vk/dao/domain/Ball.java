@@ -2,8 +2,9 @@ package com.vk.dao.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.io.Serializable;
+import javax.validation.constraints.Size;
 
 /**
  * Represents ball.
@@ -11,12 +12,14 @@ import java.io.Serializable;
  * @author vkolodrevskiy
  */
 @Entity
-public class Ball implements Serializable {
+public class Ball {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Size(min=1, max=14)
     private String color;
+
     private Double radius;
 
     public Long getId() {
