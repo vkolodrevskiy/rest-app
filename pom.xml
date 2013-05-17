@@ -12,7 +12,8 @@
 		<org.springframework-version>3.2.0.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.1</org.slf4j-version>
-	</properties>
+        <hibernate.version>3.5.6-Final</hibernate.version>
+    </properties>
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -32,6 +33,48 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <!-- This first dependency includes all the JPA implementations for the DAOs -->
+        <dependency>
+            <groupId>com.googlecode.genericdao</groupId>
+            <artifactId>dao</artifactId>
+            <version>1.2.0</version> <!-- use current version -->
+        </dependency>
+        <!-- This second one includes the Hibernate Entity Manager plugin for the framework -->
+        <dependency>
+            <groupId>com.googlecode.genericdao</groupId>
+            <artifactId>search-jpa-hibernate</artifactId>
+            <version>1.2.0</version> <!-- use current version -->
+        </dependency>
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -145,6 +188,11 @@
 			<url>http://maven.springframework.org/milestone</url>
 			<snapshots><enabled>false</enabled></snapshots>
 		</repository>
+        <repository>
+            <id>sonatype-oss-repo</id>
+            <name>Sonatype Open Source maven snapshot repo</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
 	</repositories>
 	<build>
 		<plugins>
