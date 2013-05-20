@@ -17,10 +17,10 @@ public class BallController {
     @Inject
     private BallManager ballManager;
 
-	@RequestMapping(value="list", method=RequestMethod.GET, produces="application/json")
-	public @ResponseBody List<Ball> list() {
-		return ballManager.findAllBalls();
-	}
+    @RequestMapping(value="list", method=RequestMethod.GET, produces="application/json")
+    public @ResponseBody List<Ball> list() {
+        return ballManager.findAllBalls();
+    }
 
     @RequestMapping(value="add", method=RequestMethod.POST, consumes="application/json")
     public String add(@RequestBody Ball ball) {
