@@ -12,14 +12,14 @@ import javax.inject.Inject;
 import java.util.List;
 
 /**
- * TODO: add description
+ * {@link BallManager} implementation.
  *
  * @author vkolodrevskiy
  */
 @Service
 @Transactional
 public class BallManagerImpl implements BallManager {
-    final static Logger logger = LoggerFactory.getLogger(BallManagerImpl.class);
+    private final static Logger logger = LoggerFactory.getLogger(BallManagerImpl.class);
 
     @Inject
     private BallDao ballDao;
