@@ -22,7 +22,7 @@
     <!-- Maps '/' requests to the 'home' view -->
     <mvc:view-controller path="/" view-name="home"/>
 
-    <context:component-scan base-package="com.vk" />
+    <context:component-scan base-package="com.vk.rest.controllers" />
 
     <!-- beans -->
     <bean id="ballDao" class="com.vk.dao.impl.BallDaoImpl"

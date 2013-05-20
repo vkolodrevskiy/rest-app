@@ -1,16 +1,19 @@
 package com.vk.rest.controllers;
 
 import com.vk.dao.domain.Ball;
+import com.vk.exception.AppException;
 import com.vk.service.BallManager;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.util.List;
 
+/**
+ * Ball management controller.
+ *
+ * @author vkolodrevskiy
+ */
 @Controller
 @RequestMapping("/ball")
 public class BallController {
@@ -23,8 +26,13 @@ public class BallController {
     }
 
     @RequestMapping(value="add", method=RequestMethod.POST, consumes="application/json")
-    public String add(@RequestBody Ball ball) {
+    public @ResponseBody String add(@RequestBody Ball ball) {
         ballManager.createNewBall(ball);
-        return "redirect:/";
+        return "{\"status\":\"ok\"}";
     }
+
+	@ExceptionHandler(AppException.class)
+	public @ResponseBody String handle(AppException e) {
+		return "{\"error\":\"" + e.getMessage() + "\"}";
+	}
 }
