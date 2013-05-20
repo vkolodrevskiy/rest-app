@@ -23,4 +23,11 @@
     <mvc:view-controller path="/" view-name="home"/>
 
     <context:component-scan base-package="com.vk" />
+
+    <!-- beans -->
+    <bean id="ballDao" class="com.vk.dao.impl.BallDaoImpl"
+          p:hibernateTemplate-ref="hibernateTemplate"/>
+
+    <bean id="ballManager" class="com.vk.service.impl.BallManagerImpl"
+          p:ballDao-ref="ballDao"/>
 </beans>

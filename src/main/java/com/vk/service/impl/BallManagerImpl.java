@@ -5,10 +5,8 @@ import com.vk.dao.domain.Ball;
 import com.vk.service.BallManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -16,12 +14,10 @@ import java.util.List;
  *
  * @author vkolodrevskiy
  */
-@Service
 @Transactional
 public class BallManagerImpl implements BallManager {
     private final static Logger logger = LoggerFactory.getLogger(BallManagerImpl.class);
 
-    @Inject
     private BallDao ballDao;
 
     @Override
@@ -35,4 +31,8 @@ public class BallManagerImpl implements BallManager {
         logger.debug("Adding new ball. color={} radius={}", ball.getColor(), ball.getRadius());
         return ballDao.save(ball);
     }
+
+	public void setBallDao(BallDao ballDao) {
+		this.ballDao = ballDao;
+	}
 }
