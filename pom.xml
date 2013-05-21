@@ -21,6 +21,7 @@
         <maven-surefire-plugin.version>2.12</maven-surefire-plugin.version>
         <javassist.version>3.12.1.GA</javassist.version>
         <mockito-all.version>1.9.5</mockito-all.version>
+        <log4j.version>1.2.16</log4j.version>
     </properties>
     <dependencies>
         <!-- Spring -->
@@ -91,15 +92,8 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
+            <version>${log4j.version}</version>
             <scope>runtime</scope>
-        </dependency>
-
-        <!-- @Inject -->
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
         </dependency>
 
         <!-- Servlet -->
