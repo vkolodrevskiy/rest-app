@@ -29,16 +29,16 @@ public class BallManagerImpl implements BallManager {
 
     @Override
     public Ball createNewBall(Ball ball) {
-	    if(ball.getRadius().compareTo(100D) > 0) {
-		    logger.error("Ball radius > 100.");
-		    throw new AppException("Ball radius > 100.");
-	    }
+        if(ball.getRadius().compareTo(100D) > 0) {
+            logger.error("Ball radius > 100.");
+            throw new AppException("Ball radius > 100.");
+        }
 
         logger.debug("Adding new ball. color={} radius={}", ball.getColor(), ball.getRadius());
         return ballDao.save(ball);
     }
 
-	public void setBallDao(BallDao ballDao) {
-		this.ballDao = ballDao;
-	}
+    public void setBallDao(BallDao ballDao) {
+        this.ballDao = ballDao;
+    }
 }

@@ -25,46 +25,46 @@ import static org.testng.Assert.assertEquals;
  */
 public class BallManagerImplTest {
 
-	@InjectMocks
-	private BallManager ballManager = new BallManagerImpl();
-	@Mock
-	BallDao ballDao;
+    @InjectMocks
+    private BallManager ballManager = new BallManagerImpl();
+    @Mock
+    BallDao ballDao;
 
-	@BeforeMethod
-	public void setUp() throws Exception {
-		MockitoAnnotations.initMocks(this);
+    @BeforeMethod
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
 
-		when(ballDao.findAll()).thenReturn(new ArrayList<Ball>() {{
-			add(new Ball());
-			add(new Ball());
-			add(new Ball());
-		}});
-	}
+        when(ballDao.findAll()).thenReturn(new ArrayList<Ball>() {{
+            add(new Ball());
+            add(new Ball());
+            add(new Ball());
+        }});
+    }
 
-	@Test
-	public void testFindAllBalls() {
-		List<Ball> balls = ballManager.findAllBalls();
-		assertEquals(balls.size(), 3);
-		verify(ballDao, times(1)).findAll();
-	}
+    @Test
+    public void testFindAllBalls() {
+        List<Ball> balls = ballManager.findAllBalls();
+        assertEquals(balls.size(), 3);
+        verify(ballDao, times(1)).findAll();
+    }
 
-	@Test
-	public void testCreateNewBall() {
-		Ball ball = new Ball();
-		ball.setColor("red");
-		ball.setRadius(50d);
+    @Test
+    public void testCreateNewBall() {
+        Ball ball = new Ball();
+        ball.setColor("red");
+        ball.setRadius(50d);
 
-		ballManager.createNewBall(ball);
-		verify(ballDao, times(1)).save(ball);
-	}
+        ballManager.createNewBall(ball);
+        verify(ballDao, times(1)).save(ball);
+    }
 
-	@Test(expectedExceptions = AppException.class)
-	public void testCreateNewBallInvalidRadius() {
-		Ball ball = new Ball();
-		ball.setColor("red");
-		// invalid radius
-		ball.setRadius(150d);
+    @Test(expectedExceptions = AppException.class)
+    public void testCreateNewBallInvalidRadius() {
+        Ball ball = new Ball();
+        ball.setColor("red");
+        // invalid radius
+        ball.setRadius(150d);
 
-		ballManager.createNewBall(ball);
-	}
+        ballManager.createNewBall(ball);
+    }
 }

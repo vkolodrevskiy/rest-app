@@ -31,8 +31,8 @@ public class BallController {
         return "{\"status\":\"ok\"}";
     }
 
-	@ExceptionHandler(AppException.class)
-	public @ResponseBody String handle(AppException e) {
-		return "{\"error\":\"" + e.getMessage() + "\"}";
-	}
+    @ExceptionHandler(AppException.class)
+    public @ResponseBody String handle(AppException e) {
+        return "{\"error\":\"" + e.getMessage() + "\"}";
+    }
 }

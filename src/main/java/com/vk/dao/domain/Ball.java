@@ -23,14 +23,14 @@ public class Ball {
     private String color;
     private Double radius;
 
-	// user should not be able to see id
+    // user should not be able to see id
     @JsonIgnore
     public Long getId() {
         return id;
     }
 
-	// user should not be able to setup id
-	@JsonIgnore
+    // user should not be able to setup id
+    @JsonIgnore
     public void setId(Long id) {
         this.id = id;
     }
