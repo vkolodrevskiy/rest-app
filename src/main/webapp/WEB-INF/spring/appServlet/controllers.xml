@@ -11,21 +11,11 @@
           p:prefix="/WEB-INF/views/"
           p:suffix=".jsp"/>
 
-    <!-- Root Context: defines shared resources visible to all other web components -->
-    <import resource="datasource-context.xml" />
-
     <!-- Enables the Spring MVC annotations -->
     <mvc:annotation-driven />
 
     <!-- Maps '/' requests to the 'home' view -->
     <mvc:view-controller path="/" view-name="home"/>
-
-    <!-- beans -->
-    <bean id="ballDao" class="com.vk.dao.impl.BallDaoImpl"
-          p:hibernateTemplate-ref="hibernateTemplate"/>
-
-    <bean id="ballManager" class="com.vk.service.impl.BallManagerImpl"
-          p:ballDao-ref="ballDao"/>
 
     <bean id="ballController" class="com.vk.rest.controllers.BallController"
           p:ballManager-ref="ballManager"/>
